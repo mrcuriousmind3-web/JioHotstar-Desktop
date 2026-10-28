@@ -82,7 +82,6 @@ jobs:
         with:
           tag_name: latest-builds
           name: Latest desktop installers
-          prerelease: true
           make_latest: true
           files: |
             release-assets/*.deb
