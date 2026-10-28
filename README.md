@@ -1,6 +1,7 @@
 # JioHotstar Desktop (Unofficial)
 
 A lightweight Electron desktop wrapper that opens the official JioHotstar website in its own window. This is an **unofficial community project** and is not affiliated with, endorsed by, or maintained by JioHotstar.
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/71ba3895-fd49-49fb-bac5-da29d84a41f1" />
 
 ## Supported packages
 
