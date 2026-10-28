@@ -8,8 +8,8 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "dist:linux": "electron-builder --linux deb",
-    "dist:windows": "electron-builder --win nsis"
+    "dist:linux": "electron-builder --linux deb --publish never",
+    "dist:windows": "electron-builder --win nsis --publish never"
   },
   "devDependencies": {
     "electron": "^36.3.2",
