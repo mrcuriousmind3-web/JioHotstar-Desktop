@@ -50,3 +50,11 @@ Build output is written to `dist/`.
 - A working internet connection and any required JioHotstar account or subscription are still needed.
 - Website sign-in, playback, DRM, or platform policies can change independently of this wrapper.
 - JioHotstar and its logos/trademarks belong to their respective owners.
+
+## Search tags
+
+If you're looking for a desktop app or website wrapper for JioHotstar, try these keywords:
+
+`#JioHotstar` `#JioHotstarDesktop` `#Hotstar` `#Electron` `#ElectronApp` `#DesktopApp` `#Windows` `#Linux` `#Debian` `#Ubuntu` `#Streaming` `#OpenSource` `#Unofficial`
+
+**Search keywords:** JioHotstar desktop app, Hotstar for Windows, JioHotstar Linux, JioHotstar Debian package, Hotstar Electron wrapper, streaming desktop app.
