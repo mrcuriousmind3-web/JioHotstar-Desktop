@@ -1,0 +1,61 @@
+name: Build desktop packages
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  linux-deb:
+    name: Build Linux .deb (x64)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Build Debian package
+        run: npm run dist:linux
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: JioHotstar-Desktop-Linux-deb
+          path: dist/*.deb
+          if-no-files-found: error
+      - name: Attach package to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.deb
+
+  windows-exe:
+    name: Build Windows installer
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Build Windows installer
+        run: npm run dist:windows
+      - name: Upload Windows installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: JioHotstar-Desktop-Windows-exe
+          path: dist/*.exe
+          if-no-files-found: error
+      - name: Attach installer to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.exe
