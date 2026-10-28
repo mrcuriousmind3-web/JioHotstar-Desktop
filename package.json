@@ -1,0 +1,43 @@
+{
+  "name": "jiohotstar-desktop",
+  "version": "1.0.0",
+  "description": "Unofficial desktop wrapper for the JioHotstar website",
+  "main": "main.js",
+  "author": "Community",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist:linux": "electron-builder --linux deb",
+    "dist:windows": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^36.3.2",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "web.mrcuriousmind3.jiohotstar",
+    "productName": "JioHotstar Desktop (Unofficial)",
+    "asar": true,
+    "directories": { "output": "dist" },
+    "files": ["main.js", "package.json"],
+    "linux": {
+      "target": [{ "target": "deb", "arch": ["x64"] }],
+      "category": "AudioVideo",
+      "synopsis": "Unofficial JioHotstar desktop website wrapper",
+      "maintainer": "Community"
+    },
+    "deb": {
+      "depends": ["libgtk-3-0", "libnss3", "libxss1", "libasound2"],
+      "priority": "optional"
+    },
+    "win": { "target": ["nsis"] },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
