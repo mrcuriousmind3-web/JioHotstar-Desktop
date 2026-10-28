@@ -59,3 +59,31 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/*.exe
+
+
+  publish-latest-release:
+    name: Publish installers to GitHub Releases
+    if: github.ref == 'refs/heads/main'
+    needs: [linux-deb, windows-exe]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Linux package
+        uses: actions/download-artifact@v4
+        with:
+          name: JioHotstar-Desktop-Linux-deb
+          path: release-assets
+      - name: Download Windows installer
+        uses: actions/download-artifact@v4
+        with:
+          name: JioHotstar-Desktop-Windows-exe
+          path: release-assets
+      - name: Publish installers to latest-builds release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-builds
+          name: Latest desktop installers
+          prerelease: true
+          make_latest: true
+          files: |
+            release-assets/*.deb
+            release-assets/*.exe
