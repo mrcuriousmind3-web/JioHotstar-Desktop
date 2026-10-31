@@ -19,6 +19,11 @@ function createWindow() {
     }
   });
 
+  // Remove Electron's product token so JioHotstar sees the current Chromium browser identity.
+  // This does not bypass DRM or any service restrictions.
+  const browserUserAgent = win.webContents.getUserAgent().replace(/\sElectron\/[\d.]+/i, '');
+  win.webContents.setUserAgent(browserUserAgent);
+
   win.loadURL(JIOHOTSTAR_URL);
 
   win.webContents.setWindowOpenHandler(({ url }) => {
